@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ChatMessage } from './components/ChatMessage';
 import { ChatInput } from './components/ChatInput';
 import { Message, ChatState } from './types';
-import { Link , Trash2 } from 'lucide-react';
+import { Link, Trash2 } from 'lucide-react';
 import axios from 'axios';
 
 function App() {
@@ -26,9 +26,9 @@ function App() {
       isLoading: true,
       error: null,
     }));
-
+    
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/chat', {
+      const response = await axios.post('https://fastapi-backend-uugw.onrender.com/api/chat', {
         message: content
       }, {
         headers: {
@@ -71,19 +71,17 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <header className="bg-gray-900 p-4 flex justify-between items-center">
-  <h1 className="text-xl font-bold text-white"></h1>
-  <div className="flex gap-4">
-    <button className="text-gray-400 hover:text-white flex items-center gap-2" onClick={() => {}}>
-      
-      <Link className="w-5 h-5" /><span>Share link to Prompt</span>
-    </button>
-    <button className="text-gray-400 hover:text-white flex items-center gap-2" onClick={clearChat}>
-      <Trash2 className="w-5 h-5" />
-      <span>Delete Prompt</span>
-    </button>
-  </div>
-</header>
-
+        <h1 className="text-xl font-bold text-white"></h1>
+        <div className="flex gap-4">
+          <button className="text-gray-400 hover:text-white flex items-center gap-2" onClick={() => {}}>
+            <Link className="w-5 h-5" /><span>Share link to Prompt</span>
+          </button>
+          <button className="text-gray-400 hover:text-white flex items-center gap-2" onClick={clearChat}>
+            <Trash2 className="w-5 h-5" />
+            <span>Delete Prompt</span>
+          </button>
+        </div>
+      </header>
 
       <main className="container mx-auto max-w-4xl h-[calc(100vh-8rem)]">
         <div className="h-full flex flex-col">
@@ -107,10 +105,10 @@ function App() {
         </div>
       </main>
       <div className="text-center mt-4">
-  <span className="text-gray-400 text-sm opacity-70">
-  &copy; {new Date().getFullYear()} Smart IT consulting  Ltd.
-  </span>
-</div>
+        <span className="text-gray-400 text-sm opacity-70">
+          &copy; {new Date().getFullYear()} Smart IT consulting Ltd.
+        </span>
+      </div>
     </div>
   );
 }
